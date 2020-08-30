@@ -24,3 +24,20 @@ int gcdExtended(int a, int b, int &x, int &y){
     y = x1;
     return gcd; 
 }
+
+int modInverse(int a, int m){
+    int x, y;
+    int g = gcdExtended(a, m, x, y);
+
+    // Inverse only exists for mutually primes
+    if(g != 1)
+        exit(0);
+
+    else
+    {
+        // Incase the x is negative
+        int inverse = (x % m + m) % m;
+        return inverse;
+    }
+    
+}
