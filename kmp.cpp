@@ -10,3 +10,27 @@ vector<int> prefix_function(string s){
     }
     return lps;
 }
+
+// KMP algorithm to find a pattern in a string
+vector<int> findPattern(string pattern, string text){
+    vector <int>  positions;
+    vector <int> lps = prefix_function(pattern);
+    int i = 0, j = 0;
+    while (i < text.size()){
+        if ( pattern[j] == text[i]){
+            i++;
+            j++;
+        }
+        if (j == pattern.size()){
+            positions.push_back(i - pattern.size());
+            j = lps[j - 1];
+        }
+        else if (i < text.size() && text[i] != pattern[j]){
+            if (j != 0)
+                j = lps[j - 1];
+            else
+                i++;
+        }
+    }
+    return positions;
+}
