@@ -7,7 +7,7 @@ vector<int> bellmanFord (vector <vector <int>> edges,int v, int e, int source) {
     distance[source] = 0;
     for (int i = 0; i < v; i++){
         for (int j = 0; j < edges.size(); j++) {
-            if (distance[edges[i][0]] != INT_MAX && distance[edges[i][1]] < edges[i][2] + distance[edges[i][0]])
+            if (distance[edges[i][0]] != INT_MAX && distance[edges[i][1]] > edges[i][2] + distance[edges[i][0]])
                 distance[edges[i][1]] = edges[i][2] + distance[edges[i][0]];
         }
     }
